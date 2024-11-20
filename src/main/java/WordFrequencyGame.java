@@ -24,11 +24,9 @@ public class WordFrequencyGame {
                         .forEach(list::add);
                 wordFrequencies = list;
                 wordFrequencies.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
-                StringJoiner joiner = new StringJoiner("\n");
-                wordFrequencies.stream()
+                return wordFrequencies.stream()
                         .map(w -> w.getValue() + " " + w.getWordCount())
-                        .forEach(joiner::add);
-                return joiner.toString();
+                        .collect(Collectors.joining("\n"));
             } catch (Exception e) {
                 return CALCULATE_ERROR;
             }
