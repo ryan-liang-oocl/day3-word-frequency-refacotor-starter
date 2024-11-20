@@ -15,7 +15,7 @@ public class WordFrequencyGame {
             List<WordFrequency> wordFrequencies = getWordFrequencies(sentence);
             wordFrequencies = getWordFrequencyList(wordFrequencies);
             return wordFrequencies.stream()
-                    .sorted((w1, w2) -> w2.getWordCount() - w1.getWordCount())
+                    .sorted((currentWord, nextWord) -> nextWord.getWordCount() - currentWord.getWordCount())
                     .map(WordFrequencyGame::format)
                     .collect(Collectors.joining(LINE_BREAK));
         } catch (Exception e) {
