@@ -3,6 +3,7 @@ import java.util.*;
 public class WordFrequencyGame {
 
     public static final String REGEX = "\\s+";
+    public static final String CALCULATE_ERROR = "Calculate Error";
 
     public String getWordFrequency(String sentence) {
         if (sentence.split(REGEX).length == 1) {
@@ -32,7 +33,7 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-                return "Calculate Error";
+                return CALCULATE_ERROR;
             }
         }
     }
