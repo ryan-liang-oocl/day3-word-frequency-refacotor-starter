@@ -10,17 +10,16 @@ public class WordFrequencyGame {
     public String getWordFrequency(String sentence) {
         if (sentence.split(REGEX).length == 1) {
             return sentence + " 1";
-        } else {
-            try {
-                List<WordFrequency> wordFrequencies = getWordFrequencies(sentence);
-                wordFrequencies = getWordFrequencyList(wordFrequencies);
-                return wordFrequencies.stream()
-                        .sorted((w1, w2) -> w2.getWordCount() - w1.getWordCount())
-                        .map(WordFrequencyGame::format)
-                        .collect(Collectors.joining(LINE_BREAK));
-            } catch (Exception e) {
-                return CALCULATE_ERROR;
-            }
+        }
+        try {
+            List<WordFrequency> wordFrequencies = getWordFrequencies(sentence);
+            wordFrequencies = getWordFrequencyList(wordFrequencies);
+            return wordFrequencies.stream()
+                    .sorted((w1, w2) -> w2.getWordCount() - w1.getWordCount())
+                    .map(WordFrequencyGame::format)
+                    .collect(Collectors.joining(LINE_BREAK));
+        } catch (Exception e) {
+            return CALCULATE_ERROR;
         }
     }
 
