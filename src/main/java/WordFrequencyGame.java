@@ -16,12 +16,16 @@ public class WordFrequencyGame {
                 wordFrequencies = getWordFrequencyList(wordFrequencies);
                 return wordFrequencies.stream()
                         .sorted((w1, w2) -> w2.getWordCount() - w1.getWordCount())
-                        .map(w -> w.getValue() + " " + w.getWordCount())
+                        .map(WordFrequencyGame::format)
                         .collect(Collectors.joining(LINE_BREAK));
             } catch (Exception e) {
                 return CALCULATE_ERROR;
             }
         }
+    }
+
+    private static String format(WordFrequency wordFrequency) {
+        return String.format("%s %d", wordFrequency.getValue(), wordFrequency.getWordCount());
     }
 
     private List<WordFrequency> getWordFrequencyList(List<WordFrequency> wordFrequencies) {
